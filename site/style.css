@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+}
+
+:root {
+    color-scheme: light dark;
+    font-family: "Fira Sans", system-ui, sans-serif;
+}
+
+html {
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 5rem;
+    @media screen and (max-width: 768px) {
+        font-size: 3rem;
+    }
+    transition: all ease 0.25s;
+
+    &:hover {
+        cursor: default;
+        color: blueviolet;
+        text-shadow: 0 0 6px blueviolet;
+    }
+}
+
+.four-oh-four {
+    user-select: none;
+    text-align: center;
+    h1 {
+        font-size: 10rem;
+    }
+}

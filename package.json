@@ -1,0 +1,28 @@
+{
+  "name": "simple-node-server",
+  "version": "1.0.0",
+  "description": "Testing stuff with web dev and node",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "serve": "nodemon"
+  },
+  "keywords": [],
+  "author": "nikkehtine",
+  "license": "WTFPL",
+  "dependencies": {
+    "@types/node": "^20.9.2",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".gitignore",
+      ".prettierrc",
+      "**/*.md"
+    ],
+    "watch": "server.js"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "tabWidth": 4,
+  "trailingComma": "es5",
+  "semi": true,
+  "overrides": [
+    {
+      "files": ["*.html", "*.yml", "*.tsx", "*.json", ".prettierrc"],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
