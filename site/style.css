@@ -12,10 +12,13 @@
     font-family: "Fira Sans", system-ui, sans-serif;
 }
 
-html {
+body {
     height: 100dvh;
     display: grid;
     place-items: center;
+    @media screen and (prefers-color-scheme: dark) {
+        background-color: hsl(0, 0%, 6%);
+    }
 }
 
 h1 {
@@ -24,6 +27,7 @@ h1 {
     @media screen and (max-width: 768px) {
         font-size: 3rem;
     }
+    user-select: none;
     transition: all ease 0.25s;
 
     &:hover {

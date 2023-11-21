@@ -2,6 +2,7 @@ import http from "http";
 import fs from "fs";
 import path from "path";
 import exec from "child_process";
+import chalk from "chalk";
 
 const hostname = "127.0.0.1";
 const port = 6953;
@@ -12,8 +13,9 @@ const notFound = path.join(siteDir, "404.html");
 
 const data404 = fs.readFileSync(notFound);
 
+exec.execSync("pnpm build");
 fs.watch(tsDir, () => {
-    exec.execSync("pnpm exec tsc");
+    exec.execSync("pnpm build");
 });
 
 const server = http.createServer((req, res) => {
@@ -51,11 +53,12 @@ const server = http.createServer((req, res) => {
         // Else we handle the error
         switch (err.code) {
             case "ENOENT":
-                console.log(`!! ${requestPath} not found`);
+                console.log(chalk.yellow(`!! ${requestPath} not found`));
                 res.writeHead(404, { "Content-Type": "text/html" });
                 res.end(data404);
                 break;
             default:
+                console.log(chalk.red(`ERROR: ${err.code}`));
                 res.writeHead(500);
                 res.end(
                     `ERROR: ${err.code}\nContact the site owner about this`
@@ -65,5 +68,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(chalk.blue(`Server running at http://${hostname}:${port}/`));
 });

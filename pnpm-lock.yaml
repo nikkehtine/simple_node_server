@@ -8,6 +8,9 @@ dependencies:
   '@types/node':
     specifier: ^20.9.2
     version: 20.9.2
+  chalk:
+    specifier: ^5.3.0
+    version: 5.3.0
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
@@ -59,6 +62,11 @@ packages:
     dependencies:
       fill-range: 7.0.1
     dev: true
+
+  /chalk@5.3.0:
+    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
+    dev: false
 
   /chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
