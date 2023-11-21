@@ -2,7 +2,7 @@
   "name": "simple-node-server",
   "version": "1.0.0",
   "description": "Testing stuff with web dev and node",
-  "main": "server.js",
+  "main": "server.ts",
   "type": "module",
   "scripts": {
     "serve": "nodemon"
@@ -23,6 +23,8 @@
       ".prettierrc",
       "**/*.md"
     ],
-    "watch": "server.js"
+    "watch": "server.ts",
+    "ext": "ts",
+    "exec": "tsc && node ./dist/server.js"
   }
 }

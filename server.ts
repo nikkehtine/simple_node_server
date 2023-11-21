@@ -13,12 +13,13 @@ const notFound = path.join(siteDir, "404.html");
 const data404 = fs.readFileSync(notFound);
 
 fs.watch(tsDir, () => {
-    exec.execSync("pnpm exec tsc");
+    exec.execSync("tsc --project tsconfig.scripts.json");
 });
 
-const server = http.createServer((req, res) => {
+const server: http.Server = http.createServer((req, res) => {
     // Handling requests
-    let requestPath = path.join(siteDir, req.url);
+    if (req.url == undefined) return;
+    let requestPath: string = path.join(siteDir, req.url);
     if (req.url === "/") {
         requestPath = path.join(siteDir, "index.html");
     }
@@ -27,7 +28,7 @@ const server = http.createServer((req, res) => {
     }
     let ext = path.extname(requestPath);
 
-    let type = {
+    let type: { [key: string]: string } = {
         ".html": "text/html",
         ".css": "text/css",
         ".js": "text/javascript",
@@ -37,7 +38,7 @@ const server = http.createServer((req, res) => {
         ".jpg": "image/jpg",
         ".wav": "audio/wav",
     };
-    let contentType = type[ext] || "text/plain";
+    let contentType: string = type[ext] || "text/plain";
 
     console.log(`Requested: ${requestPath} (${contentType})`);
 
