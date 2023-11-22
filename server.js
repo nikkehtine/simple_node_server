@@ -5,7 +5,7 @@ import exec from "child_process";
 import chalk from "chalk";
 
 const hostname = "127.0.0.1";
-const port = 6953;
+const port = 6969;
 
 const siteDir = "./site";
 const tsDir = "./src";
@@ -65,6 +65,16 @@ const server = http.createServer((req, res) => {
                 );
         }
     });
+});
+
+// Error handling
+server.on("error", (err) => {
+    if (err.code === "EADDRINUSE") {
+        console.log(chalk.red(`ERROR: port ${port} is already in use`));
+        process.exit(1);
+    } else {
+        console.log(chalk.red(`ERROR: ${err.code}`));
+    }
 });
 
 server.listen(port, hostname, () => {
